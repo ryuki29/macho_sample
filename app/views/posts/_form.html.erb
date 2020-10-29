@@ -1,0 +1,4 @@
+<%= form_with(model: post, local: true) do |form| %>
+      <%= form.text_area :text, placeholder: "text", rows: "5" %>
+      <%= form.submit "SEND" %>
+<% end %>

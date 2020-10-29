@@ -1,0 +1,2 @@
+<%# <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/4.4.0/jquery.min.js"></script> %>
+$('#favorites_buttons_<%= @post.id %>').html("<%= j(render partial: 'favorites/favorite', locals: {post: @post}) %>");

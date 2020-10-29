@@ -1,0 +1,25 @@
+<p><%= post.text %></p>
+<div class="more text-white">
+  <ul class="more_list">
+    <li>
+        <%= link_to '詳細', post_path(post.id), method: :get %>
+    </li>
+  <% if user_signed_in? && current_user.id == post.user_id %>
+    <li>
+      <%= link_to '編集', edit_post_path(post.id), method: :get %>
+    </li>
+    <li>
+      <%= link_to '削除', post_path(post.id), method: :delete %>
+    </li>
+  <% end %>
+  </ul>
+    <span class="name">
+      <a href="/users/<%= post.user.id %>">
+        <span>投稿者</span><%= post.user.name %>
+      </a>
+    </span>
+
+  <div id="favorites_buttons_<%= post.id %>">
+    <%= render partial: 'favorites/favorite', locals: { post: post } %>
+  </div>
+</div>

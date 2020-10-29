@@ -1,0 +1,7 @@
+<div class="contents row">
+  <%= render partial: "relationships/follow_button" %>
+  <p><%= @name %>さんの投稿一覧</p>
+  <% @posts.each do |post| %>
+      <%= render partial: "posts/post", locals: { post: post } %>
+  <% end %>
+</div>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Macho</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+    <header class="header">
+      <div class="header__bar row">
+        <h1 class="grid-6"><a href="/">Macho</a></h1>
+        <% if user_signed_in? %>
+          <div class="user_nav grid-6">
+            <%# <ul>
+              <li> %>
+                <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+                <%= link_to "投稿する", new_post_path, class: "btn-lg" %>
+              <%# </li>
+            </ul> %>
+          </div>
+          <div class="user_name">
+            <%= current_user.name %>
+          </div>
+        <% else %>
+          <div class="grid-6">
+            <%= link_to "ログイン", new_user_session_path, class: "post"%>
+            <%= link_to "新規登録", new_user_registration_path, class: "post" %>
+          </div>
+        <% end %>
+      </div>
+    </header>
+
+    <%= yield %>
+
+    <footer>
+      <p>
+        Macho 2020.
+      </p>
+    </footer>
+  </body>
+</html>
